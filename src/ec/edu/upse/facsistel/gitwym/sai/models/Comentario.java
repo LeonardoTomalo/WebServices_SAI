@@ -1,7 +1,7 @@
 package ec.edu.upse.facsistel.gitwym.sai.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.springframework.data.couchbase.core.mapping.Document;
 
@@ -24,7 +24,7 @@ public class Comentario {
 	@Id private String codigo;
 	@Field private String descripcion;
 	@Field private Usuario autor;
-	@Field private Date fecha;
+	@Field private LocalDate fecha;
 	@Field private Boolean isReportado;
 	@Field private Boolean estado;
 	@Field private ArrayList<Comentario> comentarios;

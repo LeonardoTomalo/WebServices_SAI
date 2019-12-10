@@ -1,6 +1,6 @@
 package ec.edu.upse.facsistel.gitwym.sai.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.data.couchbase.core.mapping.Document;
 
@@ -24,7 +24,7 @@ public class Video {
 	@Field private String nombre;
 	@Field private String descripcion;
 	@Field private String autor;
-	@Field private Date fecha;
+	@Field private LocalDate fecha;
 	@Field private String url;
 	@Field private Boolean estado;
 	@Field private Ranking ranking;	
