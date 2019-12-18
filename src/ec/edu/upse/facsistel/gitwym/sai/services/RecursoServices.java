@@ -23,29 +23,29 @@ import ec.edu.upse.facsistel.gitwym.sai.repositories.RecursoRepository;
 @RequestMapping("/recurso")
 public class RecursoServices {
 	
-	@Autowired private RecursoRepository recursoRepository;
+	@Autowired private RecursoRepository repository;
 	
 	@PostMapping("/saveOrUpdate")
 	public Recurso saveOrUpdate(@RequestBody Recurso r) {
 		r.setEstado(true);
-		return recursoRepository.save(r);
+		return repository.save(r);
 	}
 		
 	@DeleteMapping("/delete/{r}")
-	public void deleteBusPhysical(@PathVariable Recurso r) {		
-		if (recursoRepository.existsById(r.getId())) {
+	public void deleteLogical(@PathVariable Recurso r) {		
+		if (repository.existsById(r.getId())) {
 			r.setEstado(false);
-			recursoRepository.save(r);
+			repository.save(r);
 		}
 	}
 	
 	@GetMapping("/getAll")
-	public @ResponseBody List<Recurso> getAllRecursos() {
-		return (List<Recurso>) recursoRepository.findAll();
+	public @ResponseBody List<Recurso> getAll() {
+		return (List<Recurso>) repository.findAll();
 	}
 	
 	@GetMapping("/get/{id}")
-	public Optional<Recurso> getRecurdoId(@PathVariable String id) {
-		return recursoRepository.findById(id);        
+	public Optional<Recurso> getToId(@PathVariable String id) {
+		return repository.findById(id);        
 	}
 }
