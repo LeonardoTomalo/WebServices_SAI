@@ -29,7 +29,7 @@ public class CategoriaServices {
 		return repository.save(c);
 	}
 		
-	@DeleteMapping("/delete/{r}")
+	@DeleteMapping("/delete/{c}")
 	public void deletePhysical(@PathVariable Categoria c) {		
 		if (repository.existsById(c.getId())) {
 			repository.delete(c);;

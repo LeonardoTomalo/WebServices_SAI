@@ -29,7 +29,7 @@ public class MenuServices {
 		return repository.save(c);
 	}
 		
-	@DeleteMapping("/delete/{r}")
+	@DeleteMapping("/delete/{c}")
 	public void deletePhysical(@PathVariable Menu c) {		
 		if (repository.existsById(c.getId())) {
 			repository.delete(c);;
@@ -37,7 +37,7 @@ public class MenuServices {
 	}
 	
 	@GetMapping("/getAll")
-	public @ResponseBody List<Menu> getAll() {
+	public List<Menu> getAll() {
 		return (List<Menu>) repository.findAll();
 	}
 	
