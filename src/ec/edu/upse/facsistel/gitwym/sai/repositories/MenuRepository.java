@@ -10,4 +10,5 @@ import ec.edu.upse.facsistel.gitwym.sai.models.Menu;
 @ViewIndexed(designDoc = "menu", viewName = "all")
 public interface MenuRepository extends CouchbaseRepository<Menu, String>{
 
+	Menu findByNombre(String nombre);
 }
