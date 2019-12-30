@@ -40,7 +40,7 @@ public class RolServices {
 		return (List<Rol>) repository.findAll();
 	}
 	
-	@GetMapping("/get/{id}")
+	@GetMapping("/toId/{id}")
 	public Optional<Rol> getToId(@PathVariable String id) {
 		return repository.findById(id);
 	}

@@ -44,9 +44,4 @@ public class MenuServices {
 	public Optional<Menu> getToId(@PathVariable String id) {
 		return repository.findById(id);
 	}
-	
-	@GetMapping("/toNombre/{nombre}")
-	public Menu getToNombre(@PathVariable String nombre) {
-		return repository.findByNombre(nombre);
-	}
 }

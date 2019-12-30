@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ec.edu.upse.facsistel.gitwym.sai.models.Recurso;
 import ec.edu.upse.facsistel.gitwym.sai.repositories.RecursoRepository;
 
-
 @Service
 @RestController
 @RequestMapping("/recurso")
@@ -43,7 +42,7 @@ public class RecursoServices {
 		return (List<Recurso>) repository.findAll();
 	}
 	
-	@GetMapping("/get/{id}")
+	@GetMapping("/toId/{id}")
 	public Optional<Recurso> getToId(@PathVariable String id) {
 		return repository.findById(id);        
 	}
