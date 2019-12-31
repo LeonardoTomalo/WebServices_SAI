@@ -1,7 +1,6 @@
 package ec.edu.upse.facsistel.gitwym.sai.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,20 +27,28 @@ public class RolServices {
 		return repository.save(c);
 	}
 		
-	@DeleteMapping("/delete/{c}")
+	@DeleteMapping("/deletePhysical/{c}")
 	public void deletePhysical(@PathVariable Rol c) {		
 		if (repository.existsById(c.getId())) {
-			repository.delete(c);;
+			repository.delete(c);
+		}
+	}
+	
+	@DeleteMapping("/delete/{c}")
+	public void deleteLogical(@PathVariable Rol c) {		
+		if (repository.existsById(c.getId())) {
+			c.setEstado(false);
+			repository.save(c);
 		}
 	}
 	
 	@GetMapping("/getAll")
 	public List<Rol> getAll() {
-		return (List<Rol>) repository.findAll();
+		return repository.findByEstadoIsTrue();
 	}
 	
-	@GetMapping("/toId/{id}")
-	public Optional<Rol> getToId(@PathVariable String id) {
-		return repository.findById(id);
-	}
+//	@GetMapping("/toId/{id}")
+//	public Optional<Rol> getToId(@PathVariable String id) {
+//		return repository.findById(id);
+//	}
 }
