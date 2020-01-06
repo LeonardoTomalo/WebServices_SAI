@@ -35,7 +35,7 @@ public class RolServices {
 	}
 	
 	@DeleteMapping("/delete/{c}")
-	public void deleteLogical(@PathVariable Rol c) {		
+	public void deleteLogical(@PathVariable("c") Rol c) {		
 		if (repository.existsById(c.getId())) {
 			c.setEstado(false);
 			repository.save(c);
