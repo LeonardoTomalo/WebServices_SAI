@@ -39,9 +39,4 @@ public class CategoriaServices {
 	public List<Categoria> getAll() {
 		return (List<Categoria>) repository.findAll();
 	}
-	
-	@GetMapping("/toId/{id}")
-	public Optional<Categoria> getToId(@PathVariable String id) {
-		return repository.findById(id);
-	}
 }

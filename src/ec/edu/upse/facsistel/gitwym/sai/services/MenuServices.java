@@ -1,6 +1,7 @@
 package ec.edu.upse.facsistel.gitwym.sai.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,17 +29,17 @@ public class MenuServices {
 	}
 		
 	@DeleteMapping("/deletePhysical/{c}")
-	public void deletePhysical(@PathVariable Menu c) {		
-		if (repository.existsById(c.getId())) {
-			repository.delete(c);;
-		}
+	public void deletePhysical(@PathVariable String c) {	
+			repository.deleteById(c);
 	}
 	
 	@DeleteMapping("/delete/{c}")
-	public void deleteLogical(@PathVariable("c") Menu c) {		
-		if (repository.existsById(c.getId())) {
-			c.setEstado(false);
-			repository.save(c);
+	public void deleteLogical(@PathVariable("c") String c) {
+		Optional<Menu> opt = repository.findById(c);
+		if (opt.isPresent()) {
+			Menu m = opt.get();
+			m.setEstado(false);
+			repository.save(m);
 		}
 	}
 	
@@ -46,9 +47,4 @@ public class MenuServices {
 	public List<Menu> getAll() {
 		return repository.findByEstadoIsTrue();
 	}
-	
-//	@GetMapping("/toId/{id}")
-//	public Optional<Menu> getToId(@PathVariable String id) {
-//		return repository.findById(id);
-//	}
 }

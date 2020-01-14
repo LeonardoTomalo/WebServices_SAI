@@ -37,7 +37,7 @@ public class Recurso {
 	@Field private Ranking ranking;
 	@Field private ArrayList<Costo> costos;
 	@Field private ArrayList<String> senderosIds;
-	@Field private ArrayList<String> comodidadesIds;
+//	@Field private ArrayList<String> comodidadesIds;
 	@Field private ArrayList<String> accesibilidadesIds;
 	@Field private ArrayList<String> atractivosIds;
 	@Field private ArrayList<String> idiomasIds;

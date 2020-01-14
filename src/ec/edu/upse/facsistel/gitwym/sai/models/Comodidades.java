@@ -1,6 +1,8 @@
 package ec.edu.upse.facsistel.gitwym.sai.models;
 
 import org.springframework.data.couchbase.core.mapping.Document;
+import org.springframework.data.couchbase.core.mapping.id.GeneratedValue;
+import org.springframework.data.couchbase.core.mapping.id.GenerationStrategy;
 
 import com.couchbase.client.java.repository.annotation.Field;
 import com.couchbase.client.java.repository.annotation.Id;
@@ -18,8 +20,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Document
 public class Comodidades {
-	@Id private String id;
+	@Id @GeneratedValue(strategy = GenerationStrategy.UNIQUE) private String id;
 	@Field private String descripcion;
+	@Field private String idRecurso;
+	@Field private String idTipoComodidad;
 	@Field private String coordenadas;
-	@Field private Boolean isSelect;
 }

@@ -28,10 +28,17 @@ public class RecursoServices {
 		r.setEstado(true);
 		return repository.save(r);
 	}
-		
-	@DeleteMapping("/delete/{r}")
-	public void deleteLogical(@PathVariable Recurso r) {		
-		if (repository.existsById(r.getId())) {
+	
+	@DeleteMapping("/deletePhysical/{c}")
+	public void deletePhysical(@PathVariable String c) {
+			repository.deleteById(c);
+	}
+	
+	@DeleteMapping("/delete/{c}")
+	public void deleteLogical(@PathVariable("c") String c) {	
+		Optional<Recurso> o = repository.findById(c);
+		if (o.isPresent()) {
+			Recurso r = o.get();
 			r.setEstado(false);
 			repository.save(r);
 		}
@@ -39,11 +46,6 @@ public class RecursoServices {
 	
 	@GetMapping("/getAll")
 	public List<Recurso> getAll() {
-		return (List<Recurso>) repository.findAll();
-	}
-	
-	@GetMapping("/toId/{id}")
-	public Optional<Recurso> getToId(@PathVariable String id) {
-		return repository.findById(id);        
+		return repository.findByEstadoIsTrue();
 	}
 }
