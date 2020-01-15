@@ -1,7 +1,6 @@
 package ec.edu.upse.facsistel.gitwym.sai.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,13 +27,11 @@ public class CategoriaServices {
 		return repository.save(c);
 	}
 		
-	@DeleteMapping("/delete/{c}")
-	public void deletePhysical(@PathVariable Categoria c) {		
-		if (repository.existsById(c.getId())) {
-			repository.delete(c);;
-		}
+	@DeleteMapping("/deletePhysical/{c}")
+	public void deletePhysical(@PathVariable String c) {	
+		repository.deleteById(c);
 	}
-	
+		
 	@GetMapping("/getAll")
 	public List<Categoria> getAll() {
 		return (List<Categoria>) repository.findAll();
