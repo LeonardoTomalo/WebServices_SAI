@@ -1,16 +1,13 @@
 package ec.edu.upse.facsistel.gitwym.sai.repositories;
 
-import java.util.List;
-
 import org.springframework.data.couchbase.core.query.N1qlPrimaryIndexed;
 import org.springframework.data.couchbase.core.query.ViewIndexed;
 import org.springframework.data.couchbase.repository.CouchbaseRepository;
 
-import ec.edu.upse.facsistel.gitwym.sai.models.Imagen;
+import ec.edu.upse.facsistel.gitwym.sai.models.TipoMedia;
 
 @N1qlPrimaryIndexed
-@ViewIndexed(designDoc = "imagen", viewName = "all")
-public interface ImagenRepository extends CouchbaseRepository<Imagen, String>{
+@ViewIndexed(designDoc = "tipoMedia", viewName = "all")
+public interface TipoMediaRepository extends CouchbaseRepository<TipoMedia, String>{
 
-	List<Imagen> findByEstadoIsTrue();
 }

@@ -20,15 +20,14 @@ import ec.edu.upse.facsistel.gitwym.sai.repositories.RecursoRepository;
 @RestController
 @RequestMapping("/recurso")
 public class RecursoServices {
-	
+
 	@Autowired private RecursoRepository repository;
 	
 	@PostMapping("/saveOrUpdate")
-	public Recurso saveOrUpdate(@RequestBody Recurso r) {
-		r.setEstado(true);
-		return repository.save(r);
+	public Recurso saveOrUpdate(@RequestBody Recurso c) {
+		return repository.save(c);
 	}
-	
+		
 	@DeleteMapping("/deletePhysical/{c}")
 	public void deletePhysical(@PathVariable String c) {
 			repository.deleteById(c);

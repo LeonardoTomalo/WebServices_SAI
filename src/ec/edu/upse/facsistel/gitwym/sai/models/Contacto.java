@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Document
 public class Contacto {
-	@Id @GeneratedValue(strategy = GenerationStrategy.UNIQUE) private String codigo;
+	@Id @GeneratedValue(strategy = GenerationStrategy.UNIQUE) private String id;
 	@Field private String nombre;
 	@Field private String descripcion;
 	@Field private String telefono;

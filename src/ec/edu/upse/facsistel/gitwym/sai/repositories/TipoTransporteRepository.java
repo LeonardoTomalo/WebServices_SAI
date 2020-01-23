@@ -4,10 +4,10 @@ import org.springframework.data.couchbase.core.query.N1qlPrimaryIndexed;
 import org.springframework.data.couchbase.core.query.ViewIndexed;
 import org.springframework.data.couchbase.repository.CouchbaseRepository;
 
-import ec.edu.upse.facsistel.gitwym.sai.models.TipoAtractivo;
+import ec.edu.upse.facsistel.gitwym.sai.models.TipoTransporte;
 
 @N1qlPrimaryIndexed
 @ViewIndexed(designDoc = "tipoTransporte", viewName = "all")
-public interface TipoTransporteRepository extends CouchbaseRepository<TipoAtractivo, String>{
+public interface TipoTransporteRepository extends CouchbaseRepository<TipoTransporte, String>{
 
 }

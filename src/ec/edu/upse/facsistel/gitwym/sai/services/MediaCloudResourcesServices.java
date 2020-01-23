@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ec.edu.upse.facsistel.gitwym.sai.models.Imagen;
-import ec.edu.upse.facsistel.gitwym.sai.repositories.ImagenRepository;
+import ec.edu.upse.facsistel.gitwym.sai.models.MediaCloudResources;
+import ec.edu.upse.facsistel.gitwym.sai.repositories.MediaCloudResourcesRepository;
 
 @Service
 @RestController
-@RequestMapping("/imagen")
-public class ImagenServices {
+@RequestMapping("/mediaCloudResources")
+public class MediaCloudResourcesServices {
 
-	@Autowired private ImagenRepository repository;
+	@Autowired private MediaCloudResourcesRepository repository;
 	
 	@PostMapping("/saveOrUpdate")
-	public Imagen saveOrUpdate(@RequestBody Imagen c) {
+	public MediaCloudResources saveOrUpdate(@RequestBody MediaCloudResources c) {
 		return repository.save(c);
 	}
 		
@@ -35,16 +35,16 @@ public class ImagenServices {
 	
 	@DeleteMapping("/delete/{c}")
 	public void deleteLogical(@PathVariable("c") String c) {	
-		Optional<Imagen> o = repository.findById(c);
+		Optional<MediaCloudResources> o = repository.findById(c);
 		if (o.isPresent()) {
-			Imagen r = o.get();
+			MediaCloudResources r = o.get();
 			r.setEstado(false);
 			repository.save(r);
 		}
 	}
 	
 	@GetMapping("/getAll")
-	public List<Imagen> getAll() {
+	public List<MediaCloudResources> getAll() {
 		return repository.findByEstadoIsTrue();
 	}
 }

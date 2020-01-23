@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ec.edu.upse.facsistel.gitwym.sai.models.Ranking;
-import ec.edu.upse.facsistel.gitwym.sai.repositories.RankingRepository;
+import ec.edu.upse.facsistel.gitwym.sai.models.TipoMedia;
+import ec.edu.upse.facsistel.gitwym.sai.repositories.TipoMediaRepository;
 
 @Service
 @RestController
-@RequestMapping("/ranking")
-public class RankingServices {
+@RequestMapping("/tipoMedia")
+public class TipoMediaServices {
 
-	@Autowired private RankingRepository repository;
+	@Autowired private TipoMediaRepository repository;
 	
 	@PostMapping("/saveOrUpdate")
-	public Ranking saveOrUpdate(@RequestBody Ranking c) {
+	public TipoMedia saveOrUpdate(@RequestBody TipoMedia c) {
 		return repository.save(c);
 	}
 		
@@ -33,7 +33,7 @@ public class RankingServices {
 	}
 		
 	@GetMapping("/getAll")
-	public List<Ranking> getAll() {
-		return (List<Ranking>) repository.findAll();
+	public List<TipoMedia> getAll() {
+		return (List<TipoMedia>) repository.findAll();
 	}
 }
